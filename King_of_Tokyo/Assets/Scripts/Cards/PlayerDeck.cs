@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerDeck : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
-    
+    public List<Card> container = new List<Card>();
+
     public int x;
     public int deckSize;
 
@@ -13,7 +14,7 @@ public class PlayerDeck : MonoBehaviour
     void Start()
     {
         x = 0;
-        deckSize = 10;
+        deckSize = 3;
 
         for (int i = 0; i < deckSize; i++)
         {
@@ -26,5 +27,16 @@ public class PlayerDeck : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Shuffle()
+    {
+        for (int j = 0; j < deckSize; j++)
+        {
+            container[0] = deck[j];
+            int randomIndex = Random.Range(1, deckSize);
+            deck[j] = deck[randomIndex];
+            deck[randomIndex] = container[0];
+        }
     }
 }
