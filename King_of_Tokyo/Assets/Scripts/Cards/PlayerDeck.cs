@@ -14,7 +14,7 @@ public class PlayerDeck : MonoBehaviour
     void Start()
     {
         x = 0;
-        deckSize = 3;
+        deckSize = 10;
 
         for (int i = 0; i < deckSize; i++)
         {
