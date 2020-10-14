@@ -665,12 +665,12 @@ PrefabInstance:
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.93
+      value: -0.40999997
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 5.47
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
@@ -1582,12 +1582,12 @@ PrefabInstance:
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8
+      value: -2.28
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 5.47
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
@@ -2261,6 +2261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d4ca6be4fd28a4bbc9718f79c466b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reroll: 0
   diceValue: 0
   diceSides:
   - {fileID: 1230858243}
@@ -2426,12 +2427,12 @@ PrefabInstance:
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8
+      value: -2.28
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 5.47
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
@@ -2498,6 +2499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d4ca6be4fd28a4bbc9718f79c466b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reroll: 0
   diceValue: 0
   diceSides:
   - {fileID: 574149785}
@@ -2981,12 +2983,12 @@ PrefabInstance:
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 5.47
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
@@ -3050,12 +3052,12 @@ PrefabInstance:
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.93
+      value: -0.41
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 5.47
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
@@ -3210,6 +3212,57 @@ Transform:
   m_Father: {fileID: 1331351450}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1177258204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1177258206}
+  - component: {fileID: 1177258205}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1177258205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177258204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d96ca1bd90b52b4a8b8413040520fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dices:
+  - {fileID: 1964470774}
+  - {fileID: 1331351445}
+  - {fileID: 924380225}
+  - {fileID: 1228811965}
+  - {fileID: 2112745739}
+  - {fileID: 794244172}
+  numberOfRolls: 0
+--- !u!4 &1177258206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177258204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.873899, y: -1.0724775, z: 4.0636854}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228811964 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2068751269170932997, guid: 9a6372b433d0fa74da8127f370a0395a,
@@ -3228,6 +3281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d4ca6be4fd28a4bbc9718f79c466b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reroll: 0
   diceValue: 0
   diceSides:
   - {fileID: 52486897}
@@ -3396,6 +3450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d4ca6be4fd28a4bbc9718f79c466b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reroll: 0
   diceValue: 0
   diceSides:
   - {fileID: 1746376284}
@@ -4768,12 +4823,12 @@ PrefabInstance:
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 5.47
       objectReference: {fileID: 0}
     - target: {fileID: 5376111863766391715, guid: 9a6372b433d0fa74da8127f370a0395a,
         type: 3}
@@ -4876,6 +4931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d4ca6be4fd28a4bbc9718f79c466b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reroll: 0
   diceValue: 0
   diceSides:
   - {fileID: 1993572409}
@@ -5206,6 +5262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d4ca6be4fd28a4bbc9718f79c466b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reroll: 0
   diceValue: 0
   diceSides:
   - {fileID: 834418558}

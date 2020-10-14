@@ -9,6 +9,8 @@ public class Dice : MonoBehaviour
     bool hasLanded;
     bool rolled;
 
+    public bool reroll;
+
     Vector3 initPosition;
 
     public int diceValue;
@@ -20,16 +22,17 @@ public class Dice : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         initPosition = transform.position;
         rb.useGravity = false;
+        reroll = true;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RollDice();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    RollDice();
+        //}
 
-        if(rb.IsSleeping() && !hasLanded && rolled)
+        if (rb.IsSleeping() && !hasLanded && rolled)
         {
             hasLanded = true;
             rb.useGravity = false;
@@ -43,17 +46,21 @@ public class Dice : MonoBehaviour
         }
     }
 
-    void RollDice()
+    public void RollDice()
     {
-        if(!rolled && !hasLanded)
+        if (reroll == true)
         {
-            rolled = true;
-            rb.useGravity = true;
-            rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
-        }
-        else if (rolled && hasLanded)
-        {
-            Reset();
+            if (!rolled && !hasLanded)
+            {
+                rolled = true;
+                rb.useGravity = true;
+                rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
+            }
+            else if (rolled && hasLanded)
+            {
+                Reset();
+                RollAgain();
+            }
         }
     }
 
@@ -73,6 +80,7 @@ public class Dice : MonoBehaviour
         hasLanded = false;
         rb.useGravity = false;
         rb.isKinematic = false;
+        reroll = true;
     }
 
     void CheckSideValue()
@@ -87,6 +95,18 @@ public class Dice : MonoBehaviour
                 Debug.Log(diceValue + " has been rolled!");
             }
         }
+    }
+
+    private void OnMouseDown()
+    {
+        if(reroll == true)
+        {
+            reroll = false;
+        } else
+        {
+            reroll = true;
+        }
+        Debug.Log(reroll);
     }
 
 }
