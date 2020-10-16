@@ -27,6 +27,8 @@ public class ThisCard : MonoBehaviour
     void Start()
     {
         thisCard[0] = CardsDatabase.cardList[thisId];
+
+        //thisCard[0] = PlayerDeck.cardsInDeck[thisId];
     }
 
     // Update is called once per frame

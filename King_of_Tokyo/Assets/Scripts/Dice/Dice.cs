@@ -83,7 +83,7 @@ public class Dice : MonoBehaviour
         reroll = true;
     }
 
-    void CheckSideValue()
+    public int CheckSideValue()
     {
         diceValue = 0;
 
@@ -95,6 +95,8 @@ public class Dice : MonoBehaviour
                 Debug.Log(diceValue + " has been rolled!");
             }
         }
+
+        return diceValue;
     }
 
     private void OnMouseDown()
