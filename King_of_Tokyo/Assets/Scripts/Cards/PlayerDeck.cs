@@ -7,7 +7,7 @@ public class PlayerDeck : MonoBehaviour
     public List<Card> deck = new List<Card>();
     public List<Card> container = new List<Card>();
 
-    //public static List<Card> cardsInDeck = new List<Card>();
+    public static List<Card> cardsInDeck = new List<Card>();
 
     public int x;
     public int deckSize;
@@ -31,7 +31,7 @@ public class PlayerDeck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        cardsInDeck = deck;
     }
 
     public void Shuffle()

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ThisCard : MonoBehaviour
+public class ThisCard : MonoBehaviour, IPointerDownHandler
 {
     public List<Card> thisCard = new List<Card>();
     public int thisId;
@@ -23,12 +23,18 @@ public class ThisCard : MonoBehaviour
     public Sprite thisSprite;
     public Image thatImage;
 
+    public bool owned;
+    public bool selected;
+
+    public Monster[] monsters;
+
     // Start is called before the first frame update
     void Start()
     {
+        selected = false;
         thisCard[0] = CardsDatabase.cardList[thisId];
 
-        //thisCard[0] = PlayerDeck.cardsInDeck[thisId];
+        //thisCard[0] = PlayerDeck.cardsInDeck[2];
     }
 
     // Update is called once per frame
@@ -54,5 +60,28 @@ public class ThisCard : MonoBehaviour
         descriptionText.text = "" + description;
 
         thatImage.sprite = thisSprite;
+    }
+
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("click");
+        if (selected == true)
+        {
+            selected = false;
+        }
+        else
+        {
+            selected = true;
+
+            foreach (Monster monster in monsters)
+            {
+                if (monster.isTurn == true)
+                {
+                    monster.cardSelected = thisCard[0];
+                }
+            }
+        }
+        //throw new System.NotImplementedException();
     }
 }
