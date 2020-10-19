@@ -24,7 +24,12 @@ public class Monster : MonoBehaviour
 
     public List<Card> cardsOwned = new List<Card>();
 
-    int energyCostCard;
+    public List<GameObject> cards = new List<GameObject>();
+    public int numCardsOwned;
+
+    public GameObject hand;
+
+    public int energyCostCard;
 
     public Card cardSelected;
 
@@ -49,6 +54,7 @@ public class Monster : MonoBehaviour
         isTurn = true;
         //damageTaken = _damageTaken;
         //damageDealt = _damageDealt;
+        numCardsOwned = 0;
     }
 
     public void GoToTokyo()
@@ -97,11 +103,11 @@ public class Monster : MonoBehaviour
 
     public void CheckIfCanBuy()
     {
-        energyCostCard = PlayerDeck.cardsInDeck[2].cost;
+        energyCostCard = cardSelected.cost;
         if ((energy - energyCostCard) >= 0)
         {
-            BuyCard();
             energy -= energyCostCard;
+            BuyCard();
         }
     }
 
@@ -110,5 +116,11 @@ public class Monster : MonoBehaviour
         cardsOwned.Add(cardSelected);
 
         PlayerDeck.cardsInDeck.Remove(cardSelected);
+        cardSelected.owned = true;
+        //energyCostCard = 0;
+
+        //cards[numCardsOwned].transform.position = hand.transform.position;
+
+        numCardsOwned++;
     }
 }

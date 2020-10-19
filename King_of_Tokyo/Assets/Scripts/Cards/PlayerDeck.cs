@@ -12,6 +12,22 @@ public class PlayerDeck : MonoBehaviour
     public int x;
     public int deckSize;
 
+    public GameObject store;
+
+    public GameObject cardPrefab;
+
+    //private void Awake()
+    //{
+    //    x = 0;
+    //    deckSize = 10;
+
+    //    for (int i = 0; i < deckSize; i++)
+    //    {
+    //        x = Random.Range(0, 4);
+    //        deck[i] = CardsDatabase.cardList[x];
+    //    }
+    //    cardsInDeck = deck;
+    //}
 
     // Start is called before the first frame update
     void Start()
@@ -21,17 +37,23 @@ public class PlayerDeck : MonoBehaviour
 
         for (int i = 0; i < deckSize; i++)
         {
-            x = Random.Range(0, 5);
+            x = Random.Range(0, 4);
             deck[i] = CardsDatabase.cardList[x];
         }
         //cardsInDeck.Add(deck[0]);
 
+        StartCoroutine(StartGame());
     }
 
     // Update is called once per frame
     void Update()
     {
         cardsInDeck = deck;
+        Debug.Log("Cards In Deck Size: " + cardsInDeck.Count);
+        //foreach(Card card in cardsInDeck)
+        //{
+        //    Debug.Log(card.name);
+        //}
     }
 
     public void Shuffle()
@@ -42,6 +64,15 @@ public class PlayerDeck : MonoBehaviour
             int randomIndex = Random.Range(1, deckSize);
             deck[j] = deck[randomIndex];
             deck[randomIndex] = container[0];
+        }
+    }
+
+    IEnumerator StartGame()
+    {
+        for(int i = 0; i <=2; i++)
+        {
+            yield return new WaitForSeconds(1);
+            Instantiate(cardPrefab, store.transform.position, store.transform.rotation);
         }
     }
 }

@@ -28,13 +28,26 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler
 
     public Monster[] monsters;
 
+    public int deckSize;
+
     // Start is called before the first frame update
     void Start()
     {
+        monsters = FindObjectsOfType<Monster>();
+
         selected = false;
+
+        //deckSize = PlayerDeck.cardsInDeck.Count;
+
+        deckSize = 4;
+
+        thisId = Random.Range(0, deckSize);
+
+
+        //AssignCard();
         thisCard[0] = CardsDatabase.cardList[thisId];
 
-        //thisCard[0] = PlayerDeck.cardsInDeck[2];
+        //thisCard[0] = PlayerDeck.cardsInDeck[thisId];
     }
 
     // Update is called once per frame
@@ -45,6 +58,9 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler
         cost = thisCard[0].cost;
         keep = thisCard[0].keep;
         description = thisCard[0].description;
+
+        owned = thisCard[0].owned;
+
 
         thisSprite = thisCard[0].cardImage;
 
@@ -83,5 +99,10 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler
             }
         }
         //throw new System.NotImplementedException();
+    }
+
+    void AssignCard()
+    {
+        thisCard.Add(PlayerDeck.cardsInDeck[thisId]);
     }
 }

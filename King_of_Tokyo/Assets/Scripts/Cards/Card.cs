@@ -15,6 +15,8 @@ public class Card
 
     public Sprite cardImage;
 
+    public bool owned;
+
     public Card()
     {
 
