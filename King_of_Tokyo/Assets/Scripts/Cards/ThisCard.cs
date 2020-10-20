@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ThisCard : MonoBehaviour, IPointerDownHandler
+public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public List<Card> thisCard = new List<Card>();
     public int thisId;
@@ -30,9 +30,15 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler
 
     public int deckSize;
 
+    public GameObject cardZoomed;
+    Image imageCardZoom;
     // Start is called before the first frame update
     void Start()
     {
+        cardZoomed = GameObject.FindGameObjectWithTag("Image");
+        imageCardZoom = cardZoomed.GetComponent<Image>();
+
+
         monsters = FindObjectsOfType<Monster>();
 
         selected = false;
@@ -101,8 +107,32 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler
         //throw new System.NotImplementedException();
     }
 
+    private void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("mouse over");
+    }
+
     void AssignCard()
     {
         thisCard.Add(PlayerDeck.cardsInDeck[thisId]);
+    }
+
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        imageCardZoom.enabled = false;
+
+        Debug.Log("mouse bye");
+
+
+        //throw new System.NotImplementedException();
+    }
+
+    void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
+    {
+        cardZoomed.GetComponent<Image>().sprite = thisCard[0].cardImage;
+        imageCardZoom.enabled = true;
+        Debug.Log("mouse over");
+        //throw new System.NotImplementedException();
     }
 }

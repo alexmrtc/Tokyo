@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerDeck : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerDeck : MonoBehaviour
     public GameObject store;
 
     public GameObject cardPrefab;
+
+    public Image cardZoom;
 
     //private void Awake()
     //{
@@ -32,6 +35,8 @@ public class PlayerDeck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cardZoom.enabled = false;
+
         x = 0;
         deckSize = 10;
 
@@ -49,7 +54,7 @@ public class PlayerDeck : MonoBehaviour
     void Update()
     {
         cardsInDeck = deck;
-        Debug.Log("Cards In Deck Size: " + cardsInDeck.Count);
+        //Debug.Log("Cards In Deck Size: " + cardsInDeck.Count);
         //foreach(Card card in cardsInDeck)
         //{
         //    Debug.Log(card.name);
