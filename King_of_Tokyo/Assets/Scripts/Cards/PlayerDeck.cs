@@ -59,6 +59,7 @@ public class PlayerDeck : MonoBehaviour
         //{
         //    Debug.Log(card.name);
         //}
+
     }
 
     public void Shuffle()
@@ -79,5 +80,11 @@ public class PlayerDeck : MonoBehaviour
             yield return new WaitForSeconds(1);
             Instantiate(cardPrefab, store.transform.position, store.transform.rotation);
         }
+    }
+
+    public IEnumerator AddCard()
+    {
+        yield return new WaitForSeconds(1);
+        Instantiate(cardPrefab, store.transform.position, store.transform.rotation);
     }
 }

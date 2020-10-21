@@ -32,9 +32,18 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 
     public GameObject cardZoomed;
     Image imageCardZoom;
+
+    private PlayerDeck deck;
+    private GameObject deckGameObject;
+
     // Start is called before the first frame update
     void Start()
     {
+        deckGameObject = GameObject.FindGameObjectWithTag("Deck");
+
+        deck = deckGameObject.GetComponent<PlayerDeck>();
+
+
         cardZoomed = GameObject.FindGameObjectWithTag("Image");
         imageCardZoom = cardZoomed.GetComponent<Image>();
 
@@ -45,15 +54,15 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 
         //deckSize = PlayerDeck.cardsInDeck.Count;
 
-        deckSize = 4;
+        deckSize = deck.deckSize - 1;
 
         thisId = Random.Range(0, deckSize);
 
 
         //AssignCard();
-        thisCard[0] = CardsDatabase.cardList[thisId];
+        //thisCard[0] = CardsDatabase.cardList[thisId];
 
-        //thisCard[0] = PlayerDeck.cardsInDeck[thisId];
+        thisCard[0] = deck.deck[thisId];
     }
 
     // Update is called once per frame

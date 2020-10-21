@@ -33,6 +33,9 @@ public class Monster : MonoBehaviour
 
     public Card cardSelected;
 
+    private PlayerDeck deck;
+    private GameObject deckGameObject;
+
     public Monster()
     {
 
@@ -55,6 +58,7 @@ public class Monster : MonoBehaviour
         //damageTaken = _damageTaken;
         //damageDealt = _damageDealt;
         numCardsOwned = 0;
+
     }
 
     public void GoToTokyo()
@@ -113,6 +117,7 @@ public class Monster : MonoBehaviour
 
     public void BuyCard()
     {
+        FindDeckGameobject();
         cardsOwned.Add(cardSelected);
 
         PlayerDeck.cardsInDeck.Remove(cardSelected);
@@ -122,5 +127,14 @@ public class Monster : MonoBehaviour
         //cards[numCardsOwned].transform.position = hand.transform.position;
 
         numCardsOwned++;
+
+        StartCoroutine(deck.AddCard());
+    }
+
+    void FindDeckGameobject()
+    {
+        deckGameObject = GameObject.FindGameObjectWithTag("Deck");
+
+        deck = deckGameObject.GetComponent<PlayerDeck>();
     }
 }
