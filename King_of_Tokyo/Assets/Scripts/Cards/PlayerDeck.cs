@@ -37,13 +37,13 @@ public class PlayerDeck : MonoBehaviour
     {
         cardZoom.enabled = false;
 
-        x = 0;
+        //x = 0;
         deckSize = CardsDatabase.cardList.Count;
 
         for (int i = 0; i < deckSize; i++)
         {
-            x = Random.Range(0, CardsDatabase.cardList.Count);
-            deck[i] = CardsDatabase.cardList[x];
+            //x = Random.Range(0, CardsDatabase.cardList.Count);
+            deck[i] = CardsDatabase.cardList[i];
         }
         //cardsInDeck.Add(deck[0]);
 

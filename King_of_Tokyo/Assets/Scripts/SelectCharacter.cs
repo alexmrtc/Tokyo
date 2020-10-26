@@ -25,21 +25,14 @@ public class SelectCharacter : MonoBehaviour
         monsters = MonsterDatabase.monsterList;
 
         selectedMonster = monsters[numMonster];
-
-        monsterName.text = selectedMonster.name;
-
-        monsterImage.sprite = selectedMonster.monsterImage;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (changedFirstTime == true)
-        {
             monsterName.text = selectedMonster.name;
 
             monsterImage.sprite = selectedMonster.monsterImage;
-        }
     }
 
     public void NextMonster()
