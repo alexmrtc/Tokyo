@@ -41,6 +41,7 @@ public class Monster : MonoBehaviour
 
     }
 
+
     public Monster(int _id, string _name, int _health, int _victoryPoints, int _energy, bool _inTokyo, bool _dead, Sprite _monsterImage/*, int _damageTaken, int _damageDealt*/)
     {
         id = _id;
@@ -58,7 +59,6 @@ public class Monster : MonoBehaviour
         //damageTaken = _damageTaken;
         //damageDealt = _damageDealt;
         numCardsOwned = 0;
-
     }
 
     public void GoToTokyo()
