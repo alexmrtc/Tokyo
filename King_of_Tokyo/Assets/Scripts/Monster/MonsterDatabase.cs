@@ -8,12 +8,12 @@ public class MonsterDatabase : MonoBehaviour
 
     private void Awake()
     {
-        monsterList.Add(new Monster(0, "Meca Dragon", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/cyberdragon")));
-        monsterList.Add(new Monster(1, "Alienoid", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/alienoid")));
-        monsterList.Add(new Monster(2, "Gigazaur", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/gigazaur")));
-        monsterList.Add(new Monster(3, "Cyber Kitty", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/cyberkitty")));
-        monsterList.Add(new Monster(4, "The King", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/king")));
-        monsterList.Add(new Monster(4, "Space Penguin", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/space_penguin")));
+        monsterList.Add(new Monster(0, "Meca Dragon", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/cyberdragon"), Resources.Load<Sprite>("Monsters/mecadragon_portrait")));
+        monsterList.Add(new Monster(1, "Alienoid", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/alienoid"), Resources.Load<Sprite>("Monsters/alienoid_portrait")));
+        monsterList.Add(new Monster(2, "Gigazaur", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/gigazaur"), Resources.Load<Sprite>("Monsters/gigazaur_portrait")));
+        monsterList.Add(new Monster(3, "Cyber Kitty", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/cyberkitty"), Resources.Load<Sprite>("Monsters/cyberkitty_portrait")));
+        monsterList.Add(new Monster(4, "The King", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/king"), Resources.Load<Sprite>("Monsters/theking_portrait")));
+        monsterList.Add(new Monster(4, "Space Penguin", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/space_penguin"), Resources.Load<Sprite>("Monsters/spacepenguin_portrait")));
 
         //for (int i = 0; i < monsterList.Count; i++)
         //{

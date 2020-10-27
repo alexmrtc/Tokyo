@@ -16,6 +16,7 @@ public class Monster : MonoBehaviour
     public bool isTurn;
 
     public Sprite monsterImage;
+    public Sprite monsterPortraitImage;
 
     public Dice[] dices;
 
@@ -42,7 +43,7 @@ public class Monster : MonoBehaviour
     }
 
 
-    public Monster(int _id, string _name, int _health, int _victoryPoints, int _energy, bool _inTokyo, bool _dead, Sprite _monsterImage/*, int _damageTaken, int _damageDealt*/)
+    public Monster(int _id, string _name, int _health, int _victoryPoints, int _energy, bool _inTokyo, bool _dead, Sprite _monsterImage, Sprite _monsterPortraitImage/*, int _damageTaken, int _damageDealt*/)
     {
         id = _id;
         name = _name;
@@ -54,6 +55,7 @@ public class Monster : MonoBehaviour
         dead = _dead;
 
         monsterImage = _monsterImage;
+        monsterPortraitImage = _monsterPortraitImage;
 
         isTurn = true;
         //damageTaken = _damageTaken;

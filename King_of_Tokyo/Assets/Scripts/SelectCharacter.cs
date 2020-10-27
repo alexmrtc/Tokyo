@@ -17,6 +17,10 @@ public class SelectCharacter : MonoBehaviour
     int numMonster;
     bool changedFirstTime;
 
+    public Text monsterNamePlayers;
+    public Image monsterImagePlayers;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,5 +78,12 @@ public class SelectCharacter : MonoBehaviour
             numMonster = 5;
             selectedMonster = monsters[numMonster];
         }
+    }
+
+    public void AssignMonsterInfo()
+    {
+        monsterNamePlayers.text = selectedMonster.name;
+
+        monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
     }
 }

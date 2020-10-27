@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToTest()
     {
-        SceneManager.LoadScene("Test");
+        SceneManager.LoadScene("CardTest");
     }
 
     public void GoToMainMenu()
