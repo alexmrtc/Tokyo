@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public List<Monster> monstersPlaying = new List<Monster>();
 
-    
 
     // Start is called before the first frame update
     void Start()
@@ -30,4 +29,15 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+
+    //public void AddSelectedMonsterToPlayingMonsters(Monster monster)
+    //{
+    //    monstersPlaying.Add(monster);
+    //}
+
+    //public void RemoveSelectedMonsterFromPlayingMonsters(Monster monster)
+    //{
+    //    monstersPlaying.Remove(monster);
+    //}
 }
