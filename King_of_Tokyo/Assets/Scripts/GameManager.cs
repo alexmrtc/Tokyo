@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public List<Monster> monstersPlaying = new List<Monster>();
 
+    public List<int> idsMonstersPlaying = new List<int>();
+
+    public GameObject prefabMonster;
 
     // Start is called before the first frame update
     void Start()
@@ -17,12 +20,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void GoToTest()
     {
-        SceneManager.LoadScene("CardTest");
+
+        StartCoroutine("LoadCardScene");
     }
 
     public void GoToMainMenu()
@@ -30,6 +34,36 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    IEnumerator LoadCardScene()
+    {
+        // Set the current Scene to be able to unload it later
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // The Application loads the Scene in the background at the same time as the current Scene.
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("CardTest", LoadSceneMode.Additive);
+
+        // Wait until the last operation fully loads to return anything
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
+        foreach (Monster monster in monstersPlaying)
+        {
+            GameObject m = Instantiate(prefabMonster);
+
+            m.GetComponent<Monster>().id = monster.id;
+            m.GetComponent<Monster>().name = monster.name;
+            m.GetComponent<Monster>().monsterImage = monster.monsterImage;
+            m.GetComponent<Monster>().health = monster.health;
+            m.GetComponent<Monster>().victoryPoints = monster.victoryPoints;
+
+            SceneManager.MoveGameObjectToScene(m, SceneManager.GetSceneByName("CardTest"));
+        }
+        // Unload the previous Scene
+        SceneManager.UnloadSceneAsync(currentScene);
+    }
 
     //public void AddSelectedMonsterToPlayingMonsters(Monster monster)
     //{

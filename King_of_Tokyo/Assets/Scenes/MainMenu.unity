@@ -2220,6 +2220,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monstersPlaying: []
+  idsMonstersPlaying: 
+  prefabMonster: {fileID: 3368012383225172137, guid: 32157e6ad7c9cb543b98f19fb550524b,
+    type: 3}
 --- !u!4 &1879073705
 Transform:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class ChooseMonster : MonoBehaviour
 
     public int numMonster;
 
-    public List<int> idsMonstersPlaying = new List<int>();
+    //public List<int> idsMonstersPlaying = new List<int>();
 
     public GameManager gameManager;
 
@@ -45,36 +45,28 @@ public class ChooseMonster : MonoBehaviour
 
     void GenerateRandomNumberNotExisting()
     {
-        //numMonster = Random.Range(0, 5);
-
-        for (int i = 0; i < gameManager.monstersPlaying.Count; i++)
-        {
-            idsMonstersPlaying.Add(gameManager.monstersPlaying[i].id);
-        }
-
         do
         {
-            //if (idsMonstersPlaying.Contains(numMonster))
-            //{
             numMonster = Random.Range(0, 6);
-            //}
-        } while (idsMonstersPlaying.Contains(numMonster) );
+        } while (gameManager.idsMonstersPlaying.Contains(numMonster));
     }
 
     void AddSelectedMonsterToPlayingMonsters(Monster monster)
     {
         gameManager.monstersPlaying.Add(monster);
+
+        gameManager.idsMonstersPlaying.Add(monster.id);
     }
 
     void RemoveSelectedMonsterFromPlayingMonsters(Monster monster)
     {
         gameManager.monstersPlaying.Remove(monster);
 
-        for (int i = 0; i < idsMonstersPlaying.Count; i++)
+        for (int i = 0; i < gameManager.idsMonstersPlaying.Count; i++)
         {
-            if (idsMonstersPlaying[i] == selectedMonster.id)
+            if (gameManager.idsMonstersPlaying[i] == monster.id)
             {
-                idsMonstersPlaying.Remove(idsMonstersPlaying[i]);
+                gameManager.idsMonstersPlaying.Remove(gameManager.idsMonstersPlaying[i]);
             }
         }
     }
@@ -102,6 +94,7 @@ public class ChooseMonster : MonoBehaviour
     public void DeactivateMonster()
     {
         RemoveSelectedMonsterFromPlayingMonsters(selectedMonster);
+
         activateButton.SetActive(true);
         deactivateButton.SetActive(false);
 
@@ -119,69 +112,60 @@ public class ChooseMonster : MonoBehaviour
 
     public void NextMonster()
     {
-        for (int i = 0; i < gameManager.monstersPlaying.Count; i++)
-        {
-            idsMonstersPlaying.Add(gameManager.monstersPlaying[i].id);
-        }
-
         numMonster++;
 
-        if (idsMonstersPlaying.Contains(numMonster) == false)
+        if (numMonster > 5)
         {
-            //RemoveSelectedMonsterFromPlayingMonsters(selectedMonster);
-            if (numMonster <= 5)
-            {
-                selectedMonster = monsters[numMonster];
-                monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
-                monsterNamePlayers.text = selectedMonster.name;
-            }
-            else
-            {
-                numMonster = 0;
-                selectedMonster = monsters[numMonster];
-                monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
-                monsterNamePlayers.text = selectedMonster.name;
-            }
+            numMonster = 0;
+        }
 
 
-            //AddSelectedMonsterToPlayingMonsters(selectedMonster);
+        if (gameManager.idsMonstersPlaying.Contains(numMonster) == false)
+        {
+            RemoveSelectedMonsterFromPlayingMonsters(selectedMonster);
+
+            //gameManager.idsMonstersPlaying[1] = numMonster;
+
+            selectedMonster = monsters[numMonster];
+            monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
+            monsterNamePlayers.text = selectedMonster.name;
+
+            AddSelectedMonsterToPlayingMonsters(selectedMonster);
         } else
         {
-            NextMonster();
+            if (gameManager.idsMonstersPlaying.Count > 6)
+            {
+                NextMonster();
+            }
         }
     }
 
     public void PreviousMonster()
     {
-        for (int i = 0; i < gameManager.monstersPlaying.Count; i++)
-        {
-            idsMonstersPlaying.Add(gameManager.monstersPlaying[i].id);
-        }
-
         numMonster--;
 
-        if (idsMonstersPlaying.Contains(numMonster) == false)
+        if (numMonster < 0)
         {
-            //RemoveSelectedMonsterFromPlayingMonsters(selectedMonster);
-            if (numMonster >= 0)
-            {
-                selectedMonster = monsters[numMonster];
-                monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
-                monsterNamePlayers.text = selectedMonster.name;
-            }
-            else
-            {
-                numMonster = 5;
-                selectedMonster = monsters[numMonster];
-                monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
-                monsterNamePlayers.text = selectedMonster.name;
-            }
+            numMonster = 5;
+        }
 
-            //AddSelectedMonsterToPlayingMonsters(selectedMonster);
+        if (gameManager.idsMonstersPlaying.Contains(numMonster) == false)
+        {
+            RemoveSelectedMonsterFromPlayingMonsters(selectedMonster);
+
+
+            selectedMonster = monsters[numMonster];
+            monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
+            monsterNamePlayers.text = selectedMonster.name;
+
+            AddSelectedMonsterToPlayingMonsters(selectedMonster);
         }
         else
         {
-            PreviousMonster();
+            if(gameManager.idsMonstersPlaying.Count > 6)
+            {
+                PreviousMonster();
+            }
         }
     }
 }
