@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject prefabMonster;
 
+    public List<GameObject> monsters = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +62,8 @@ public class GameManager : MonoBehaviour
             m.GetComponent<Monster>().victoryPoints = monster.victoryPoints;
             m.name = monster.name;
 
+            monsters.Add(m);
+
             SceneManager.MoveGameObjectToScene(m, SceneManager.GetSceneByName("CardTest"));
         }
 
@@ -87,10 +91,10 @@ public class GameManager : MonoBehaviour
 
         idsMonstersPlaying.Add(monster.id);
 
-        foreach(Monster monsterP in monstersPlaying)
-        {
-            Debug.Log("Monster: " + monsterP.name);
-        }
+        //foreach(Monster monsterP in monstersPlaying)
+        //{
+        //    Debug.Log("Monster: " + monsterP.name);
+        //}
     }
 
     public void RemoveSelectedMonsterFromPlayingMonsters(Monster monster)
@@ -102,6 +106,17 @@ public class GameManager : MonoBehaviour
             if (idsMonstersPlaying[i] == monster.id)
             {
                 idsMonstersPlaying.Remove(idsMonstersPlaying[i]);
+            }
+        }
+    }
+
+    public void CheckMonsterCanAfford()
+    {
+        foreach (GameObject monster in monsters)
+        {
+            if (monster.GetComponent<Monster>().isTurn == true)
+            {
+                monster.GetComponent<Monster>().CheckIfCanBuy();
             }
         }
     }

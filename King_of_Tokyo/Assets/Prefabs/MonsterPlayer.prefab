@@ -171,6 +171,8 @@ MonoBehaviour:
   deactivateButton: {fileID: 2672056839171673553}
   nextButton: {fileID: 5069164591582482951}
   previousButton: {fileID: 2453891871673645556}
+  numMonster: 0
+  gameManager: {fileID: 0}
 --- !u!1 &1772062085180904160
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 469, y: 200}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &1772062085331555622
@@ -322,7 +324,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Space Penguin
+  m_Text: 
 --- !u!1 &2453891871673645556
 GameObject:
   m_ObjectHideFlags: 0
