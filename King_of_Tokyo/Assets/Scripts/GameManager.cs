@@ -58,8 +58,14 @@ public class GameManager : MonoBehaviour
             m.GetComponent<Monster>().monsterImage = monster.monsterImage;
             m.GetComponent<Monster>().health = monster.health;
             m.GetComponent<Monster>().victoryPoints = monster.victoryPoints;
+            m.name = monster.name;
 
             SceneManager.MoveGameObjectToScene(m, SceneManager.GetSceneByName("CardTest"));
+        }
+
+        foreach (int idMonst in idsMonstersPlaying)
+        {
+            Debug.Log("Id: " + idMonst);
         }
         // Unload the previous Scene
         SceneManager.UnloadSceneAsync(currentScene);
@@ -74,4 +80,29 @@ public class GameManager : MonoBehaviour
     //{
     //    monstersPlaying.Remove(monster);
     //}
+
+    public void AddSelectedMonsterToPlayingMonsters(Monster monster)
+    {
+        monstersPlaying.Add(monster);
+
+        idsMonstersPlaying.Add(monster.id);
+
+        foreach(Monster monsterP in monstersPlaying)
+        {
+            Debug.Log("Monster: " + monsterP.name);
+        }
+    }
+
+    public void RemoveSelectedMonsterFromPlayingMonsters(Monster monster)
+    {
+        monstersPlaying.Remove(monster);
+
+        for (int i = 0; i < idsMonstersPlaying.Count; i++)
+        {
+            if (idsMonstersPlaying[i] == monster.id)
+            {
+                idsMonstersPlaying.Remove(idsMonstersPlaying[i]);
+            }
+        }
+    }
 }

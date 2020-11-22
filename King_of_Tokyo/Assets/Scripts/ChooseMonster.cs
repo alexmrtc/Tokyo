@@ -51,25 +51,25 @@ public class ChooseMonster : MonoBehaviour
         } while (gameManager.idsMonstersPlaying.Contains(numMonster));
     }
 
-    void AddSelectedMonsterToPlayingMonsters(Monster monster)
-    {
-        gameManager.monstersPlaying.Add(monster);
+    //void AddSelectedMonsterToPlayingMonsters(Monster monster)
+    //{
+    //    gameManager.monstersPlaying.Add(monster);
 
-        gameManager.idsMonstersPlaying.Add(monster.id);
-    }
+    //    gameManager.idsMonstersPlaying.Add(monster.id);
+    //}
 
-    void RemoveSelectedMonsterFromPlayingMonsters(Monster monster)
-    {
-        gameManager.monstersPlaying.Remove(monster);
+    //void RemoveSelectedMonsterFromPlayingMonsters(Monster monster)
+    //{
+    //    gameManager.monstersPlaying.Remove(monster);
 
-        for (int i = 0; i < gameManager.idsMonstersPlaying.Count; i++)
-        {
-            if (gameManager.idsMonstersPlaying[i] == monster.id)
-            {
-                gameManager.idsMonstersPlaying.Remove(gameManager.idsMonstersPlaying[i]);
-            }
-        }
-    }
+    //    for (int i = 0; i < gameManager.idsMonstersPlaying.Count; i++)
+    //    {
+    //        if (gameManager.idsMonstersPlaying[i] == monster.id)
+    //        {
+    //            gameManager.idsMonstersPlaying.Remove(gameManager.idsMonstersPlaying[i]);
+    //        }
+    //    }
+    //}
 
     public void ActivateMonster()
     {
@@ -80,7 +80,7 @@ public class ChooseMonster : MonoBehaviour
 
         selectedMonster = monsters[numMonster];
 
-        AddSelectedMonsterToPlayingMonsters(selectedMonster);
+        gameManager.AddSelectedMonsterToPlayingMonsters(selectedMonster);
 
         monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
         monsterNamePlayers.text = selectedMonster.name;
@@ -93,7 +93,7 @@ public class ChooseMonster : MonoBehaviour
 
     public void DeactivateMonster()
     {
-        RemoveSelectedMonsterFromPlayingMonsters(selectedMonster);
+        gameManager.RemoveSelectedMonsterFromPlayingMonsters(selectedMonster);
 
         activateButton.SetActive(true);
         deactivateButton.SetActive(false);
@@ -101,11 +101,7 @@ public class ChooseMonster : MonoBehaviour
         nextButton.SetActive(false);
         previousButton.SetActive(false);
 
-        //selectedMonster = monsters[Random.Range(0, 5)];
-
-        //monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
         monsterNamePlayers.text = "";
-
 
         monsterActive = false;
     }
@@ -114,15 +110,24 @@ public class ChooseMonster : MonoBehaviour
     {
         numMonster++;
 
-        if (numMonster > 5)
+        while (gameManager.idsMonstersPlaying.Contains(numMonster) == true)
         {
-            numMonster = 0;
+            numMonster++;
+
+            if (numMonster > 5)
+            {
+                numMonster = 0;
+                if (gameManager.idsMonstersPlaying.Contains(numMonster))
+                {
+                    NextMonster();
+                }
+            }
         }
 
 
         if (gameManager.idsMonstersPlaying.Contains(numMonster) == false)
         {
-            RemoveSelectedMonsterFromPlayingMonsters(selectedMonster);
+            gameManager.RemoveSelectedMonsterFromPlayingMonsters(selectedMonster);
 
             //gameManager.idsMonstersPlaying[1] = numMonster;
 
@@ -130,39 +135,49 @@ public class ChooseMonster : MonoBehaviour
             monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
             monsterNamePlayers.text = selectedMonster.name;
 
-            AddSelectedMonsterToPlayingMonsters(selectedMonster);
-        } else
+            gameManager.AddSelectedMonsterToPlayingMonsters(selectedMonster);
+        }
+        else
         {
             if (gameManager.idsMonstersPlaying.Count > 6)
             {
-                NextMonster();
+                numMonster++;
             }
         }
+
     }
 
     public void PreviousMonster()
     {
         numMonster--;
 
-        if (numMonster < 0)
+        while (gameManager.idsMonstersPlaying.Contains(numMonster) == true)
         {
-            numMonster = 5;
+            numMonster--;
+            if (numMonster < 0)
+            {
+                numMonster = 5;
+
+                if (gameManager.idsMonstersPlaying.Contains(numMonster))
+                {
+                    PreviousMonster();
+                }
+            }
         }
 
         if (gameManager.idsMonstersPlaying.Contains(numMonster) == false)
         {
-            RemoveSelectedMonsterFromPlayingMonsters(selectedMonster);
-
+            gameManager.RemoveSelectedMonsterFromPlayingMonsters(selectedMonster);
 
             selectedMonster = monsters[numMonster];
             monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
             monsterNamePlayers.text = selectedMonster.name;
 
-            AddSelectedMonsterToPlayingMonsters(selectedMonster);
+            gameManager.AddSelectedMonsterToPlayingMonsters(selectedMonster);
         }
         else
         {
-            if(gameManager.idsMonstersPlaying.Count > 6)
+            if (gameManager.idsMonstersPlaying.Count > 6)
             {
                 PreviousMonster();
             }
