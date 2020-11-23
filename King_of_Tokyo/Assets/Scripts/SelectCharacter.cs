@@ -20,6 +20,8 @@ public class SelectCharacter : MonoBehaviour
     public Text monsterNamePlayers;
     public Image monsterImagePlayers;
 
+    public GameObject prefabMonsterSelect1;
+
 
     // Start is called before the first frame update
     void Start()
@@ -83,7 +85,8 @@ public class SelectCharacter : MonoBehaviour
     public void AssignMonsterInfo()
     {
         monsterNamePlayers.text = selectedMonster.name;
-
         monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
+
+        prefabMonsterSelect1.GetComponent<ChooseMonster>().AssignMonsterFromSelector(numMonster);
     }
 }

@@ -14,6 +14,7 @@ public class PlayerDeck : MonoBehaviour
     public int deckSize;
 
     public GameObject store;
+    public GameObject hand;
 
     public GameObject cardPrefab;
 

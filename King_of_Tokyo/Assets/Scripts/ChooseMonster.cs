@@ -30,8 +30,7 @@ public class ChooseMonster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        monsters = MonsterDatabase.monsterList;
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Init();
     }
 
     // Update is called once per frame
@@ -43,6 +42,12 @@ public class ChooseMonster : MonoBehaviour
         //}
     }
 
+    private void Init()
+    {
+        monsters = MonsterDatabase.monsterList;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
     void GenerateRandomNumberNotExisting()
     {
         do
@@ -51,25 +56,28 @@ public class ChooseMonster : MonoBehaviour
         } while (gameManager.idsMonstersPlaying.Contains(numMonster));
     }
 
-    //void AddSelectedMonsterToPlayingMonsters(Monster monster)
-    //{
-    //    gameManager.monstersPlaying.Add(monster);
+    public void AssignMonsterFromSelector(int id)
+    {
+        Init();
 
-    //    gameManager.idsMonstersPlaying.Add(monster.id);
-    //}
+        numMonster = id;
 
-    //void RemoveSelectedMonsterFromPlayingMonsters(Monster monster)
-    //{
-    //    gameManager.monstersPlaying.Remove(monster);
+        activateButton.SetActive(false);
+        deactivateButton.SetActive(true);
 
-    //    for (int i = 0; i < gameManager.idsMonstersPlaying.Count; i++)
-    //    {
-    //        if (gameManager.idsMonstersPlaying[i] == monster.id)
-    //        {
-    //            gameManager.idsMonstersPlaying.Remove(gameManager.idsMonstersPlaying[i]);
-    //        }
-    //    }
-    //}
+        Debug.Log("Size Monsters: " + monsters.Count);
+        selectedMonster = monsters[numMonster];
+
+        gameManager.AddSelectedMonsterToPlayingMonsters(selectedMonster);
+
+        monsterImagePlayers.sprite = selectedMonster.monsterPortraitImage;
+        monsterNamePlayers.text = selectedMonster.name;
+
+        monsterActive = true;
+
+        nextButton.SetActive(true);
+        previousButton.SetActive(true);
+    }
 
     public void ActivateMonster()
     {

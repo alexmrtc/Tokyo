@@ -606,9 +606,7 @@ MonoBehaviour:
   thatImage: {fileID: 7037623696303076426}
   owned: 0
   selected: 0
-  monsters:
-  - {fileID: 0}
-  - {fileID: 0}
+  monsters: []
   deckSize: 0
   cardZoomed: {fileID: 0}
 --- !u!114 &5977026982034392220

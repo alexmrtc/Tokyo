@@ -110,6 +110,7 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
                 if (monster.isTurn == true)
                 {
                     monster.cardSelected = thisCard[0];
+                    monster.cardGameObject = this.gameObject;
                 }
             }
         }
@@ -143,5 +144,18 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         imageCardZoom.enabled = true;
         Debug.Log("mouse over");
         //throw new System.NotImplementedException();
+    }
+
+    public void GoToHand()
+    {
+        Debug.Log("Moving to Hand position: "+ deck.hand.transform);
+
+
+        this.transform.SetParent(deck.hand.transform);
+        this.transform.localScale = Vector3.one;
+        this.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        this.transform.eulerAngles = new Vector3(25, 0, 0);
+
+        Debug.Log("Current position: " + this.transform);
     }
 }

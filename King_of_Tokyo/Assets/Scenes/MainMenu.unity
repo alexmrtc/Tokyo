@@ -261,6 +261,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29074945}
   m_CullTransparentMesh: 0
+--- !u!1 &46393173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1772062084484658329, guid: f6b8b2ceec9e42345aab41af51facef9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1772062083993185788}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &65101074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1041,7 +1047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &866204729
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1082,6 +1088,7 @@ MonoBehaviour:
   monsterImage: {fileID: 979591873}
   monsterNamePlayers: {fileID: 1887058137}
   monsterImagePlayers: {fileID: 26987973}
+  prefabMonsterSelect1: {fileID: 46393173}
 --- !u!1 &866974947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,7 +2019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1838587405
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2223,6 +2230,7 @@ MonoBehaviour:
   idsMonstersPlaying: 
   prefabMonster: {fileID: 3368012383225172137, guid: 32157e6ad7c9cb543b98f19fb550524b,
     type: 3}
+  monsters: []
 --- !u!4 &1879073705
 Transform:
   m_ObjectHideFlags: 0

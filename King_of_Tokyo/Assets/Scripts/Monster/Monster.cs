@@ -33,6 +33,7 @@ public class Monster : MonoBehaviour
     public int energyCostCard;
 
     public Card cardSelected;
+    public GameObject cardGameObject;
 
     private PlayerDeck deck;
     private GameObject deckGameObject;
@@ -121,12 +122,14 @@ public class Monster : MonoBehaviour
     {
         FindDeckGameobject();
         cardsOwned.Add(cardSelected);
+        cards.Add(cardGameObject);
 
         PlayerDeck.cardsInDeck.Remove(cardSelected);
         cardSelected.owned = true;
         //energyCostCard = 0;
 
         //cards[numCardsOwned].transform.position = hand.transform.position;
+        cards[numCardsOwned].GetComponent<ThisCard>().GoToHand();
 
         numCardsOwned++;
 
