@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public List<Card> thisCard = new List<Card>();
+    public Card thisCard;
     public int thisId;
 
     public int id;
@@ -62,22 +62,22 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         //AssignCard();
         //thisCard[0] = CardsDatabase.cardList[thisId];
 
-        thisCard[0] = deck.deck[thisId];
+        thisCard = deck.deck[thisId];
     }
 
     // Update is called once per frame
     void Update()
     {
-        id = thisCard[0].id;
-        cardName = thisCard[0].name;
-        cost = thisCard[0].cost;
-        keep = thisCard[0].keep;
-        description = thisCard[0].description;
+        id = thisCard.id;
+        cardName = thisCard.name;
+        cost = thisCard.cost;
+        keep = thisCard.keep;
+        description = thisCard.description;
 
-        owned = thisCard[0].owned;
+        owned = thisCard.owned;
 
 
-        thisSprite = thisCard[0].cardImage;
+        thisSprite = thisCard.cardImage;
 
         nameText.text = "" + cardName;
         costText.text = "" + cost;
@@ -109,7 +109,7 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
             {
                 if (monster.isTurn == true)
                 {
-                    monster.cardSelected = thisCard[0];
+                    monster.cardSelected = thisCard;
                     monster.cardGameObject = this.gameObject;
                 }
             }
@@ -124,7 +124,7 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 
     void AssignCard()
     {
-        thisCard.Add(PlayerDeck.cardsInDeck[thisId]);
+        thisCard =PlayerDeck.cardsInDeck[thisId];
     }
 
 
@@ -140,7 +140,7 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        cardZoomed.GetComponent<Image>().sprite = thisCard[0].cardImage;
+        cardZoomed.GetComponent<Image>().sprite = thisCard.cardImage;
         imageCardZoom.enabled = true;
         Debug.Log("mouse over");
         //throw new System.NotImplementedException();
@@ -157,5 +157,12 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         this.transform.eulerAngles = new Vector3(25, 0, 0);
 
         Debug.Log("Current position: " + this.transform);
+    }
+
+
+
+    public void UseCard()
+    {
+        thisCard.CardUse();
     }
 }

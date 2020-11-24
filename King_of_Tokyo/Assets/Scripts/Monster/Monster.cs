@@ -24,8 +24,8 @@ public class Monster : MonoBehaviour
     public int damageDealt;
 
     public List<Card> cardsOwned = new List<Card>();
-
     public List<GameObject> cards = new List<GameObject>();
+
     public int numCardsOwned;
 
     public GameObject hand;
@@ -126,6 +126,7 @@ public class Monster : MonoBehaviour
 
         PlayerDeck.cardsInDeck.Remove(cardSelected);
         cardSelected.owned = true;
+        cardSelected.owner = this;
         //energyCostCard = 0;
 
         //cards[numCardsOwned].transform.position = hand.transform.position;

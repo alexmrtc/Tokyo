@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -16,6 +17,9 @@ public class Card
     public Sprite cardImage;
 
     public bool owned;
+    public Monster owner;
+
+    protected Action<Monster> cardFunction;
 
     public Card()
     {
@@ -31,5 +35,10 @@ public class Card
         description = _description;
 
         cardImage = _cardImage;
+    }
+
+    public virtual void CardUse()
+    {
+        cardFunction?.Invoke(owner);
     }
 }

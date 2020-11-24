@@ -76,18 +76,14 @@ public class CardsDatabase : MonoBehaviour
         cardList.Add(new Card(65, "Alas", 6, true, "Gasta 2 Energía para no perder Corazones durante este turno", Resources.Load<Sprite>("Cards/Wings")));
 
 
-
-
-
-
-        for (int i = 0; i < cardList.Count; i++)
-        {
-            Debug.Log("Card: " + cardList[i].id);
-            Debug.Log("Name: " + cardList[i].name);
-            Debug.Log("Cost: " + cardList[i].cost);
-            Debug.Log("Keep: " + cardList[i].keep.ToString());
-            Debug.Log("Description: " + cardList[i].description);
-        }
+        //for (int i = 0; i < cardList.Count; i++)
+        //{
+        //    Debug.Log("Card: " + cardList[i].id);
+        //    Debug.Log("Name: " + cardList[i].name);
+        //    Debug.Log("Cost: " + cardList[i].cost);
+        //    Debug.Log("Keep: " + cardList[i].keep.ToString());
+        //    Debug.Log("Description: " + cardList[i].description);
+        //}
     }
 
     public void Start()

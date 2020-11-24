@@ -120,4 +120,34 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public GameObject GetCurrentMonster()
+    {
+        GameObject currentMonster = null;
+
+        foreach(GameObject monster in monsters)
+        {
+            if (monster.GetComponent<Monster>().isTurn == true)
+            {
+                currentMonster = monster;
+            }
+        }
+
+        return currentMonster;
+    }
+
+    public List<GameObject> GetOtherMonsters()
+    {
+        List<GameObject> otherMonsters = new List<GameObject>();
+
+        foreach (GameObject monster in monsters)
+        {
+            if (monster.GetComponent<Monster>().isTurn != true)
+            {
+                otherMonsters.Add(monster);
+            }
+        }
+
+        return otherMonsters;
+    }
 }
