@@ -109,8 +109,8 @@ public class ThisCard : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
             {
                 if (monster.isTurn == true)
                 {
-                    monster.cardSelected = thisCard;
-                    monster.cardGameObject = this.gameObject;
+                    monster.SetCardSelected(thisCard);
+                    monster.SetCardGameObject(this.gameObject);
                 }
             }
         }

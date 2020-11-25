@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    //Monster Related
     public int id;
     public string name;
     public int health;
@@ -12,28 +13,29 @@ public class Monster : MonoBehaviour
 
     public bool inTokyo;
     public bool dead;
-
     public bool isTurn;
 
     public Sprite monsterImage;
     public Sprite monsterPortraitImage;
 
+    public MonsterFunctions monsterFunctions;
+
+    //Dice Related
     public Dice[] dices;
 
     public int damageTaken;
     public int damageDealt;
 
+    //Card Related
     public List<Card> cardsOwned = new List<Card>();
     public List<GameObject> cards = new List<GameObject>();
-
     public int numCardsOwned;
-
-    public GameObject hand;
-
-    public int energyCostCard;
 
     public Card cardSelected;
     public GameObject cardGameObject;
+    public int energyCostCard;
+
+    public GameObject hand;
 
     private PlayerDeck deck;
     private GameObject deckGameObject;
@@ -108,39 +110,113 @@ public class Monster : MonoBehaviour
         damageTaken = 0;
     }
 
-    public void CheckIfCanBuy()
-    {
-        energyCostCard = cardSelected.cost;
-        if ((energy - energyCostCard) >= 0)
-        {
-            energy -= energyCostCard;
-            BuyCard();
-        }
-    }
+    //public void CheckIfCanBuy()
+    //{
+    //    energyCostCard = cardSelected.cost;
+    //    if ((energy - energyCostCard) >= 0)
+    //    {
+    //        energy -= energyCostCard;
+    //        BuyCard();
+    //    }
+    //}
 
-    public void BuyCard()
-    {
-        FindDeckGameobject();
-        cardsOwned.Add(cardSelected);
-        cards.Add(cardGameObject);
+    //public void BuyCard()
+    //{
+    //    FindDeckGameobject();
+    //    cardsOwned.Add(cardSelected);
+    //    cards.Add(cardGameObject);
 
-        PlayerDeck.cardsInDeck.Remove(cardSelected);
-        cardSelected.owned = true;
-        cardSelected.owner = this;
-        //energyCostCard = 0;
+    //    PlayerDeck.cardsInDeck.Remove(cardSelected);
+    //    cardSelected.owned = true;
+    //    cardSelected.owner = this;
+    //    //energyCostCard = 0;
 
-        //cards[numCardsOwned].transform.position = hand.transform.position;
-        cards[numCardsOwned].GetComponent<ThisCard>().GoToHand();
+    //    //cards[numCardsOwned].transform.position = hand.transform.position;
+    //    cards[numCardsOwned].GetComponent<ThisCard>().GoToHand();
 
-        numCardsOwned++;
+    //    numCardsOwned++;
 
-        StartCoroutine(deck.AddCard());
-    }
+    //    StartCoroutine(deck.AddCard());
+    //}
 
-    void FindDeckGameobject()
-    {
-        deckGameObject = GameObject.FindGameObjectWithTag("Deck");
+    //void FindDeckGameobject()
+    //{
+    //    deckGameObject = GameObject.FindGameObjectWithTag("Deck");
 
-        deck = deckGameObject.GetComponent<PlayerDeck>();
-    }
+    //    deck = deckGameObject.GetComponent<PlayerDeck>();
+    //}
+
+    #region Getters and Setters
+    //Monster Related
+    public int GetId() { return id; }
+    public void SetId(int idV) { id = idV; }
+
+    public string GetName() { return name; }
+    public void SetName(string nameV) { name = nameV; }
+
+    public int GetHealth() { return health; }
+    public void SetHealth(int healthV) { health = healthV; }
+
+    public int GetVictoryPoints() { return victoryPoints; }
+    public void SetVictoryPoints(int victoryPointsV) { victoryPoints = victoryPointsV; }
+
+    public int GetEnergy()    { return energy;  }
+    public void SetEnergy(int energyV) { energy = energyV; }
+
+    public bool GetInTokyo() { return inTokyo; }
+    public void SetInTokyo(bool inTokyoV) { inTokyo = inTokyoV; }
+
+    public bool GetDead() { return dead; }
+    public void SetDead(bool deadV) { dead = deadV; }
+
+    public bool GetIsTurn() { return isTurn; }
+    public void SetIsTurn(bool isTurnV) { isTurn = isTurnV; }
+
+    public Sprite GetMonsterImage() { return monsterImage; }
+    public void SetMonsterImage(Sprite monsterImageV) { monsterImage = monsterImageV; }
+
+    public Sprite GetMonsterPortraitImage() { return monsterPortraitImage; }
+    public void SetMonsterPortraitImage(Sprite monsterPortraitImageV) { monsterPortraitImage = monsterPortraitImageV; }
+
+    public MonsterFunctions GetMonsterFunctions() { return monsterFunctions; }
+    public void SetMonsterFunctions(MonsterFunctions monsterFunctionsV) { monsterFunctions = monsterFunctionsV; }
+
+    //Dice Related
+    public Dice[] GetDice() { return dices; }
+    public void SetDice(Dice[] diceV) { dices = diceV; }
+
+    public int GetDamageDealt() { return damageDealt; }
+    public void SetDamageDealt(int damageDealtV) { damageDealt = damageDealtV; }
+
+    public int GetDamageTaken() { return damageTaken; }
+    public void SetDamageTaken(int damageTakenV) { damageTaken = damageTakenV; }
+
+    //Card Related
+    public List<Card> GetCardsOwned() { return cardsOwned; }
+    public void SetCardsOwned(List<Card> cardsOwnedV) { cardsOwned = cardsOwnedV; }
+
+    public List<GameObject> GetCards() { return cards; }
+    public void SetCards(List<GameObject> cardsV) { cards = cardsV; }
+
+    public int GetNumCardsOwned() { return numCardsOwned; }
+    public void SetNumCardsOwned(int numCardsOwnedV) { numCardsOwned = numCardsOwnedV; }
+
+    public Card GetCardSelected() { return cardSelected; }
+    public void SetCardSelected(Card cardSelectedV) { cardSelected = cardSelectedV; }
+
+    public GameObject GetCardGameObject() { return cardGameObject; }
+    public void SetCardGameObject(GameObject cardGameObjectV) { cardGameObject = cardGameObjectV; }
+
+    public int GetEnergyCostCard() { return energyCostCard; }
+    public void SetEnergyCostCard(int energyCostCardV) { energyCostCard = energyCostCardV; }
+
+    public GameObject GetHand() { return hand; }
+    public void SetHand(GameObject handV) { hand = handV; }
+
+    public PlayerDeck GetDeck()    { return deck; }
+    public void SetDeck(PlayerDeck deckV)    { deck = deckV; }
+
+    public GameObject GetDeckGameObject()    { return deckGameObject;  }
+    public void SetDeckGameObject(GameObject deckGameObjectV)    { deckGameObject = deckGameObjectV; }
+    #endregion
 }

@@ -6,6 +6,7 @@ public class CardTest : MonoBehaviour
 {
 
     protected GameManager gameManager;
+    public CardFunctions cardFunctions;
 
     // Start is called before the first frame update
     void Start()
@@ -22,5 +23,10 @@ public class CardTest : MonoBehaviour
     public void CallGameManagerBuy()
     {
         gameManager.CheckMonsterCanAfford();
+    }
+
+    public void UseCardFunction()
+    {
+        cardFunctions.Use();
     }
 }

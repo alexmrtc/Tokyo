@@ -91,7 +91,7 @@ public class Dice : MonoBehaviour
         {
             if (side.GetOnGround())
             {
-                diceValue = side.sideValue;
+                SetDiceValue(side.sideValue);
                 Debug.Log(diceValue + " has been rolled!");
             }
         }
@@ -110,5 +110,8 @@ public class Dice : MonoBehaviour
         }
         Debug.Log(reroll);
     }
+
+    public int GetDiceValue() { return diceValue; }
+    public void SetDiceValue(int diceValueV) { diceValue = diceValueV; }
 
 }

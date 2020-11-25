@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3368012383225172143}
   - component: {fileID: 3368012383225172142}
+  - component: {fileID: 4393917176776322566}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -52,10 +53,16 @@ MonoBehaviour:
   dead: 0
   isTurn: 0
   monsterImage: {fileID: 0}
+  monsterPortraitImage: {fileID: 0}
+  monsterFunctions: {fileID: 4393917176776322566}
   dices: []
   damageTaken: 0
   damageDealt: 0
   cardsOwned: []
+  cards: []
+  numCardsOwned: 0
+  hand: {fileID: 0}
+  energyCostCard: 0
   cardSelected:
     id: 0
     name: 
@@ -63,3 +70,47 @@ MonoBehaviour:
     keep: 0
     description: 
     cardImage: {fileID: 0}
+    owned: 0
+    owner: {fileID: 0}
+  cardGameObject: {fileID: 0}
+--- !u!114 &4393917176776322566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3368012383225172137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db1bdeb1cfae634ba796d2c184e2d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  name: 
+  health: 0
+  victoryPoints: 0
+  energy: 0
+  inTokyo: 0
+  dead: 0
+  isTurn: 0
+  monsterImage: {fileID: 0}
+  monsterPortraitImage: {fileID: 0}
+  monsterFunctions: {fileID: 0}
+  dices: []
+  damageTaken: 0
+  damageDealt: 0
+  cardsOwned: []
+  cards: []
+  numCardsOwned: 0
+  hand: {fileID: 0}
+  energyCostCard: 0
+  cardSelected:
+    id: 0
+    name: 
+    cost: 0
+    keep: 0
+    description: 
+    cardImage: {fileID: 0}
+    owned: 0
+    owner: {fileID: 0}
+  cardGameObject: {fileID: 0}

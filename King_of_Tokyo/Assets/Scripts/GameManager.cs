@@ -60,6 +60,9 @@ public class GameManager : MonoBehaviour
             m.GetComponent<Monster>().monsterImage = monster.monsterImage;
             m.GetComponent<Monster>().health = monster.health;
             m.GetComponent<Monster>().victoryPoints = monster.victoryPoints;
+
+            //Init MonsterFunctions
+            m.GetComponent<Monster>().monsterFunctions.InitMonster();
             m.name = monster.name;
 
             monsters.Add(m);
@@ -75,26 +78,11 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(currentScene);
     }
 
-    //public void AddSelectedMonsterToPlayingMonsters(Monster monster)
-    //{
-    //    monstersPlaying.Add(monster);
-    //}
-
-    //public void RemoveSelectedMonsterFromPlayingMonsters(Monster monster)
-    //{
-    //    monstersPlaying.Remove(monster);
-    //}
-
     public void AddSelectedMonsterToPlayingMonsters(Monster monster)
     {
         monstersPlaying.Add(monster);
 
         idsMonstersPlaying.Add(monster.id);
-
-        //foreach(Monster monsterP in monstersPlaying)
-        //{
-        //    Debug.Log("Monster: " + monsterP.name);
-        //}
     }
 
     public void RemoveSelectedMonsterFromPlayingMonsters(Monster monster)
@@ -116,11 +104,13 @@ public class GameManager : MonoBehaviour
         {
             if (monster.GetComponent<Monster>().isTurn == true)
             {
-                monster.GetComponent<Monster>().CheckIfCanBuy();
+                monster.GetComponent<Monster>().monsterFunctions.CheckIfCanBuy();
             }
         }
     }
 
+
+    #region GetMonsters
     public GameObject GetCurrentMonster()
     {
         GameObject currentMonster = null;
@@ -150,4 +140,6 @@ public class GameManager : MonoBehaviour
 
         return otherMonsters;
     }
+
+    #endregion
 }

@@ -35,7 +35,7 @@ public class CardsDatabase : MonoBehaviour
         cardList.Add(new Card(24, "Tiempo congelado", 5, true, "En un turno que obtengas una tirada de triple 1 o superior, puedes jugar otro turno con un dado menos", Resources.Load<Sprite>("Cards/Freeze_time")));
         cardList.Add(new Card(25, "Frenesí", 7, false, "Dispones de otro turno después de éste", Resources.Load<Sprite>("Cards/Frenzy")));
         cardList.Add(new Card(26, "Amigo de los niños", 3, true, "Cuando obtienes Energía, ganas 1 energía adicional", Resources.Load<Sprite>("Cards/Friend_of_children")));
-        cardList.Add(new Card(27, "refinería de gas", 6, false, "Gana 2 Estrellas y todos los demás monstruos pierden 3 Corazones", Resources.Load<Sprite>("Cards/Gas_refinery")));
+        cardList.Add(new Card(27, "Refinería de gas", 6, false, "Gana 2 Estrellas y todos los demás monstruos pierden 3 Corazones", Resources.Load<Sprite>("Cards/Gas_refinery")));
         cardList.Add(new Card(28, "Cerebro gigante", 5, true, "Dispones de 1 lanzamiento de dados adicional cada turno", Resources.Load<Sprite>("Cards/Giant_brain")));
         cardList.Add(new Card(29, "Gourmet", 4, true, "Si consigues una tirada de triple 1 o superior, ganas 2 Estrellas adicionales", Resources.Load<Sprite>("Cards/Gourmet")));
         cardList.Add(new Card(30, "Curar", 3, false, "Gana 2 Corazones", Resources.Load<Sprite>("Cards/Heal")));
