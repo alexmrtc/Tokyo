@@ -6,6 +6,7 @@ public class MonsterDatabase : MonoBehaviour
 {
     public static List<Monster> monsterList = new List<Monster>();
 
+
     private void Awake()
     {
         monsterList.Add(new Monster(0, "Meca Dragon", 10, 0, 0, false, false, Resources.Load<Sprite>("Monsters/cyberdragon"), Resources.Load<Sprite>("Monsters/mecadragon_portrait")));

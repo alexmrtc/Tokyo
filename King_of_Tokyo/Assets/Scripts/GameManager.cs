@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject prefabMonster;
 
-    public List<GameObject> monsters = new List<GameObject>();
+    public static List<GameObject> monsters = new List<GameObject>();
+
+    public Turn turn;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +53,8 @@ public class GameManager : MonoBehaviour
         }
 
         // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
+        turn = GameObject.Find("DiceHolder").GetComponent<Turn>();
+
         foreach (Monster monster in monstersPlaying)
         {
             GameObject m = Instantiate(prefabMonster);
@@ -69,6 +73,8 @@ public class GameManager : MonoBehaviour
 
             SceneManager.MoveGameObjectToScene(m, SceneManager.GetSceneByName("CardTest"));
         }
+
+        turn.StartGame(monsters);
 
         foreach (int idMonst in idsMonstersPlaying)
         {

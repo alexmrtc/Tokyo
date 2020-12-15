@@ -6,7 +6,7 @@ public class Dice : MonoBehaviour
 {
     Rigidbody rb;
 
-    bool hasLanded;
+    public bool hasLanded;
     bool rolled;
 
     public bool reroll;
@@ -44,6 +44,11 @@ public class Dice : MonoBehaviour
         {
             RollAgain();
         }
+    }
+
+    public void RandomizeValue()
+    {
+        diceValue = Random.Range(0, 6);
     }
 
     public void RollDice()

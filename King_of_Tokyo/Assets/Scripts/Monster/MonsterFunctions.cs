@@ -9,7 +9,7 @@ public class MonsterFunctions : Monster
     public void InitMonster()
     {
         monster = GetComponentInParent<Monster>();
-
+        monster.SetNumDice(6);
     }
 
     public void GoToTokyo()
@@ -54,6 +54,7 @@ public class MonsterFunctions : Monster
 
         StartCoroutine(monster.GetDeck().AddCard());
     }
+
 
     void FindDeckGameobject()
     {

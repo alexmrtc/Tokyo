@@ -22,11 +22,15 @@ public class Monster : MonoBehaviour
 
     //Dice Related
     public Dice[] dices;
+    public int[] diceValues;
+    private int numDice;
 
     public int damageTaken;
     public int damageDealt;
 
     //Card Related
+    bool canBuy;
+
     public List<Card> cardsOwned = new List<Card>();
     public List<GameObject> cards = new List<GameObject>();
     public int numCardsOwned;
@@ -185,6 +189,12 @@ public class Monster : MonoBehaviour
     public Dice[] GetDice() { return dices; }
     public void SetDice(Dice[] diceV) { dices = diceV; }
 
+    public int[] GetDiceValues() { return diceValues; }
+    public void SetDiceValues(int diceValuesV, int position) { diceValues[position] = diceValuesV; }
+
+    public int GetNumDice() { return numDice; }
+    public void SetNumDice(int numDiceV) { numDice = numDiceV; }
+
     public int GetDamageDealt() { return damageDealt; }
     public void SetDamageDealt(int damageDealtV) { damageDealt = damageDealtV; }
 
@@ -192,6 +202,9 @@ public class Monster : MonoBehaviour
     public void SetDamageTaken(int damageTakenV) { damageTaken = damageTakenV; }
 
     //Card Related
+    public bool GetCanBuy() { return canBuy; }
+    public void SetCanBuy(bool canBuyV) { canBuy = canBuyV; }
+
     public List<Card> GetCardsOwned() { return cardsOwned; }
     public void SetCardsOwned(List<Card> cardsOwnedV) { cardsOwned = cardsOwnedV; }
 
